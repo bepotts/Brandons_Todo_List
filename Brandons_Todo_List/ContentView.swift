@@ -10,46 +10,38 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @State private var visibility: NavigationSplitViewVisibility = .automatic
+    @State private var selection: String? = "notes"
 
     var body: some View {
         NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
+            List(selection: $selection) {
+                NavigationLink(value: "notes") {
+                    Label("Notes", systemImage: "square.and.pencil")
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                NavigationLink(value: "photos") {
+                    Label("Photos", systemImage: "photo")
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                NavigationLink(value: "maps") {
+                    Label("Maps", systemImage: "map")
+                }
+                NavigationLink(value: "settings") {
+                    Label("Settings", systemImage: "gearshape")
                 }
             }
+            .navigationTitle("ToDo List")
         } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            switch selection {
+                case "notes":
+                    NotesPage()
+                case "photos":
+                    PhotosPage()
+                case "maps":
+                    MapsPage()
+                case "settings":
+                    SettingsPage()
+                default:
+                    Text("Select an item")
             }
         }
     }
