@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct NotesPage: View {
+    @State private var currentText = ""
+    @State private var noteItems: [NoteText] = []
+    
     var body: some View {
-        Text("This is the Notes Page")
+        List(noteItems, id: \.self) { note in
+            Text(note.text)
+        }
+        TextField("Insert a note", text: $currentText)
+            .textFieldStyle(.roundedBorder)
+            .padding()
+            .onSubmit {
+                print("Submit button pressed")
+                noteItems.append(NoteText(text: currentText))
+            }
+    }
+    
+    func addNote(text: String) {
+        noteItems.append(NoteText(text: text))
     }
 }
 
 #Preview {
     NotesPage()
+}
+
+fileprivate struct NoteText: Identifiable, Hashable {
+    let id: UUID = UUID()
+    var text: String
 }
