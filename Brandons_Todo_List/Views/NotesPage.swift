@@ -13,7 +13,13 @@ struct NotesPage: View {
     
     var body: some View {
         List(noteItems, id: \.self) { note in
-            Text(note.text)
+            HStack {
+                Image(systemName: "circle.fill")
+                    .font(.system(size: 6))  // tiny bullet
+                    .padding(.top, 6)        // aligns with text
+
+                Text(note.text)
+            }
         }
         TextField("Insert a note", text: $currentText)
             .textFieldStyle(.roundedBorder)
