@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import os
 
 struct NotesPage: View {
     @Environment(\.modelContext) private var context
@@ -28,7 +29,7 @@ struct NotesPage: View {
             .textFieldStyle(.roundedBorder)
             .padding()
             .onSubmit {
-                print("Submit button pressed")
+                Logger.notes.info("Submit button pressed")
                 addNote(text: currentText)
             }
     }
@@ -38,10 +39,10 @@ struct NotesPage: View {
         context.insert(newNode)
         do {
             try context.save()
-            print("Model Saved")
+            Logger.notes.info("Note saved")
             noteItems.append(NoteText(text: text))
         } catch {
-            print("There was an error printing the model")
+            Logger.notes.error("Error saving note: \(error)")
         }
     }
 }
