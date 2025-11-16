@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NotesPage: View {
+    @Environment(\.modelContext) private var context
+    @Query(sort: \NoteText.lastEdited, order: .reverse) var notes: [NoteText]
     @State private var currentText = ""
     @State private var noteItems: [NoteText] = []
     
@@ -26,20 +29,23 @@ struct NotesPage: View {
             .padding()
             .onSubmit {
                 print("Submit button pressed")
-                noteItems.append(NoteText(text: currentText))
+                addNote(text: currentText)
             }
     }
     
     func addNote(text: String) {
-        noteItems.append(NoteText(text: text))
+        let newNode: NoteText = NoteText(text: text)
+        context.insert(newNode)
+        do {
+            try context.save()
+            print("Model Saved")
+            noteItems.append(NoteText(text: text))
+        } catch {
+            print("There was an error printing the model")
+        }
     }
 }
 
 #Preview {
     NotesPage()
-}
-
-fileprivate struct NoteText: Identifiable, Hashable {
-    let id: UUID = UUID()
-    var text: String
 }
