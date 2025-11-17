@@ -8,5 +8,5 @@
 import os
 
 extension Logger {
-    static let notes: Logger = Logger(subsystem: "pottsProjects.Brandons-Todo-List", category: "notes" )
+    static let notes: Logger = Logger(subsystem: AppStrings.bundle.rawValue, category: "notes" )
 }
