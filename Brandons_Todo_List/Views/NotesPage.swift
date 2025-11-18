@@ -13,10 +13,9 @@ struct NotesPage: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \NoteText.lastEdited, order: .reverse) var notes: [NoteText]
     @State private var currentText = ""
-    @State private var noteItems: [NoteText] = []
     
     var body: some View {
-        List(noteItems, id: \.self) { note in
+        List(notes, id: \.self) { note in
             HStack {
                 Image(systemName: "circle.fill")
                     .font(.system(size: 6))  // tiny bullet
@@ -35,12 +34,10 @@ struct NotesPage: View {
     }
     
     func addNote(text: String) {
-        let newNode: NoteText = NoteText(text: text)
-        context.insert(newNode)
+        context.insert(NoteText(text: text))
         do {
             try context.save()
             Logger.notes.info("Note saved")
-            noteItems.append(NoteText(text: text))
         } catch {
             Logger.notes.error("Error saving note: \(error)")
         }
