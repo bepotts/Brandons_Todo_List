@@ -15,7 +15,8 @@ struct NotesPage: View {
     @State private var currentText = ""
     
     var body: some View {
-        List(notes, id: \.self) { note in
+        List(notes) { note in
+            @Bindable var note = note
             HStack {
                 Image(systemName: "circle.fill")
                     .font(.system(size: 6))  // tiny bullet
@@ -30,6 +31,7 @@ struct NotesPage: View {
             .onSubmit {
                 Logger.notes.info("Submit button pressed")
                 addNote(text: currentText)
+                currentText = ""
             }
     }
     
