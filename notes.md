@@ -4,4 +4,4 @@ Notes app page
 ===
 * Make cells deletable
 * Make cells editable
-
+* Add push notifications for when you arrive the place you want to do something at 
