@@ -6,10 +6,18 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MapsPage: View {
+    @State private var position: MapCameraPosition = .automatic
+    
     var body: some View {
-        Text("This is the Maps Page")
+        Map(position: $position) {
+            UserAnnotation()
+            Marker("San Francisco", coordinate: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194))
+            Marker("Los Angeles", coordinate: CLLocationCoordinate2D(latitude: 34.0522, longitude: -118.2437))
+                .tint(.red)
+        }
     }
 }
 
