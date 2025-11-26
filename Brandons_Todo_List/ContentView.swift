@@ -10,44 +10,17 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @State private var visibility: NavigationSplitViewVisibility = .automatic
-    @State private var selection: String? = "notes"
+    @State private var isLoggedIn: Bool = false
 
     var body: some View {
-        NavigationSplitView {
-            List(selection: $selection) {
-                NavigationLink(value: "notes") {
-                    Label("Notes", systemImage: "square.and.pencil")
-                }
-                NavigationLink(value: "photos") {
-                    Label("Photos", systemImage: "photo")
-                }
-                NavigationLink(value: "maps") {
-                    Label("Maps", systemImage: "map")
-                }
-                NavigationLink(value: "settings") {
-                    Label("Settings", systemImage: "gearshape")
-                }
-            }
-            .navigationTitle("ToDo List")
-        } detail: {
-            switch selection {
-                case "notes":
-                    NotesPage()
-                case "photos":
-                    PhotosPage()
-                case "maps":
-                    MapsPage()
-                case "settings":
-                    SettingsPage()
-                default:
-                    Text("Select an item")
-            }
+        if isLoggedIn {
+            NavigationPage()
+        } else {
+            AccountCreationPage()
         }
     }
 }
 
 #Preview {
     ContentView()
-//        .modelContainer(for: Item.self, inMemory: true)
 }
