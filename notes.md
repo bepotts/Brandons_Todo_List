@@ -12,3 +12,8 @@ Backend
 * Incorporate AI somehow? 
 * Maybe use the notes to generate goals and actionable tasks
 * 
+
+Accounts
+===
+* Add email authentication
+* 
