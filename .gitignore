@@ -21,3 +21,9 @@ Carthage/Build/
 # Logs and temporary files
 *.log
 *.tmp
+
+# Secrets files
+secrets.xcconfig
+credentials/
+GoogleService-Info.plist
+

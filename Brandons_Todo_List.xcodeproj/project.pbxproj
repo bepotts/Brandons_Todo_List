@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29B88D8C2ED9F63F004DD1C2 /* secrets.xcconfig.template in Resources */ = {isa = PBXBuildFile; fileRef = 29B88D8B2ED9F635004DD1C2 /* secrets.xcconfig.template */; };
+		29B88D912ED9FC50004DD1C2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 29B88D902ED9FC50004DD1C2 /* FirebaseAnalytics */; };
+		29B88D932ED9FC50004DD1C2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 29B88D922ED9FC50004DD1C2 /* FirebaseAuth */; };
+		29B88D952ED9FC50004DD1C2 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 29B88D942ED9FC50004DD1C2 /* FirebaseCore */; };
 		29CA83F42EBD1611006ABD42 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 29CA83F32EBD1611006ABD42 /* README.md */; };
 		29CA83F82EBD16B2006ABD42 /* notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 29CA83F72EBD16B2006ABD42 /* notes.md */; };
 		29CA83FC2EBD1777006ABD42 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 29CA83FB2EBD1777006ABD42 /* .gitignore */; };
@@ -33,6 +37,7 @@
 		298E29842EBBF0DC00864C18 /* Brandons_Todo_List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandons_Todo_List.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		298E29932EBBF0DD00864C18 /* Brandons_Todo_ListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Brandons_Todo_ListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		298E299D2EBBF0DD00864C18 /* Brandons_Todo_ListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Brandons_Todo_ListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		29B88D8B2ED9F635004DD1C2 /* secrets.xcconfig.template */ = {isa = PBXFileReference; lastKnownFileType = text; path = secrets.xcconfig.template; sourceTree = "<group>"; };
 		29CA83F32EBD1611006ABD42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		29CA83F72EBD16B2006ABD42 /* notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = notes.md; sourceTree = "<group>"; };
 		29CA83FB2EBD1777006ABD42 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -54,6 +59,11 @@
 			path = Brandons_Todo_ListUITests;
 			sourceTree = "<group>";
 		};
+		29B88D8D2ED9F84A004DD1C2 /* credentials */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = credentials;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B88D912ED9FC50004DD1C2 /* FirebaseAnalytics in Frameworks */,
+				29B88D952ED9FC50004DD1C2 /* FirebaseCore in Frameworks */,
+				29B88D932ED9FC50004DD1C2 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +97,8 @@
 		298E297B2EBBF0DC00864C18 = {
 			isa = PBXGroup;
 			children = (
+				29B88D8D2ED9F84A004DD1C2 /* credentials */,
+				29B88D8B2ED9F635004DD1C2 /* secrets.xcconfig.template */,
 				29CA83F72EBD16B2006ABD42 /* notes.md */,
 				29CA83F32EBD1611006ABD42 /* README.md */,
 				298E29862EBBF0DC00864C18 /* Brandons_Todo_List */,
@@ -121,9 +136,13 @@
 			);
 			fileSystemSynchronizedGroups = (
 				298E29862EBBF0DC00864C18 /* Brandons_Todo_List */,
+				29B88D8D2ED9F84A004DD1C2 /* credentials */,
 			);
 			name = Brandons_Todo_List;
 			packageProductDependencies = (
+				29B88D902ED9FC50004DD1C2 /* FirebaseAnalytics */,
+				29B88D922ED9FC50004DD1C2 /* FirebaseAuth */,
+				29B88D942ED9FC50004DD1C2 /* FirebaseCore */,
 			);
 			productName = Brandons_Todo_List;
 			productReference = 298E29842EBBF0DC00864C18 /* Brandons_Todo_List.app */;
@@ -229,6 +248,7 @@
 			files = (
 				29CA83FC2EBD1777006ABD42 /* .gitignore in Resources */,
 				29CA83F82EBD16B2006ABD42 /* notes.md in Resources */,
+				29B88D8C2ED9F63F004DD1C2 /* secrets.xcconfig.template in Resources */,
 				29CA83F42EBD1611006ABD42 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,6 +633,24 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		29B88D902ED9FC50004DD1C2 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29B88D882ED91572004DD1C2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		29B88D922ED9FC50004DD1C2 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29B88D882ED91572004DD1C2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		29B88D942ED9FC50004DD1C2 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29B88D882ED91572004DD1C2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 298E297C2EBBF0DC00864C18 /* Project object */;
 }
