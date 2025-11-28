@@ -207,6 +207,9 @@
 			);
 			mainGroup = 298E297B2EBBF0DC00864C18;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				29B88D882ED91572004DD1C2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 298E29852EBBF0DC00864C18 /* Products */;
 			projectDirPath = "";
@@ -599,6 +602,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		29B88D882ED91572004DD1C2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 298E297C2EBBF0DC00864C18 /* Project object */;
 }
