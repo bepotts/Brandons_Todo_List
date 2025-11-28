@@ -5,10 +5,13 @@
 //  Created by Brandon Potts on 11/26/25.
 //
 
+import SwiftData
 import SwiftUI
+import os
 
 struct AccountCreationPage: View {
     
+    @Environment(\.modelContext) private var context
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     @State private var password: String = ""
@@ -24,8 +27,27 @@ struct AccountCreationPage: View {
             SecureField("Password", text: $password).roundedTextView()
             SecureField("Confirm Password", text: $confirmPassword).roundedTextView()
             Button("Create Account") {
-                print("Account Submitted")
+                let user = User(firstName: firstName, lastName: lastName, password: password,
+                                passwordConfirmation: confirmPassword, email: email)
+                do {
+                    let isValid = try user.validateFields()
+                    if isValid {
+                        try saveUser(user: user)
+                    }
+                } catch {
+                    Logger.users.error("Error in user validation: \(error.localizedDescription)")
+                }
             }
+        }
+    }
+    
+    private func saveUser(user: User) throws {
+        context.insert(user)
+        do {
+            try context.save()
+            Logger.users.info("User Saved: \(user.firstName) \(user.lastName) (\(user.email))")
+        } catch {
+            Logger.users.error("\(error.localizedDescription)")
         }
     }
 }

@@ -9,4 +9,6 @@ import os
 
 extension Logger {
     static let notes: Logger = Logger(subsystem: AppStrings.bundle.rawValue, category: "notes" )
+    
+    static let users: Logger = Logger(subsystem: AppStrings.bundle.rawValue, category: "users" )
 }
