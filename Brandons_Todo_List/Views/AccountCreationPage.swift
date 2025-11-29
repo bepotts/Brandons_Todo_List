@@ -12,6 +12,7 @@ import os
 struct AccountCreationPage: View {
     
     @Environment(\.modelContext) private var context
+    @EnvironmentObject var session: UserSession
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     @State private var password: String = ""
@@ -32,7 +33,11 @@ struct AccountCreationPage: View {
                 do {
                     let isValid = try user.validateFields()
                     if isValid {
-                        try saveUser(user: user)
+                        if (try saveUser(user: user)) != nil {
+                            session.isLoggedIn = true
+                            session.user = user
+                            Logger.users.info("User Session created: \(user.firstName) \(user.lastName) (\(user.email))")
+                        }
                     }
                 } catch {
                     Logger.users.error("Error in user validation: \(error.localizedDescription)")
@@ -41,14 +46,16 @@ struct AccountCreationPage: View {
         }
     }
     
-    private func saveUser(user: User) throws {
+    private func saveUser(user: User) throws -> Bool? {
         context.insert(user)
         do {
             try context.save()
             Logger.users.info("User Saved: \(user.firstName) \(user.lastName) (\(user.email))")
+            return true
         } catch {
             Logger.users.error("\(error.localizedDescription)")
         }
+        return false
     }
 }
 

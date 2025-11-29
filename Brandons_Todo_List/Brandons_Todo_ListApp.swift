@@ -5,17 +5,11 @@
 //  Created by Brandon Potts on 11/5/25.
 //
 
+import Combine
 import FirebaseCore
 import SwiftUI
 import SwiftData
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        FirebaseApp.configure()
-        return true
-    }
-}
 
 @main
 struct Brandons_Todo_ListApp: App {
@@ -38,7 +32,23 @@ struct Brandons_Todo_ListApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(UserSession())
         }
         .modelContainer(sharedModelContainer)
     }
+}
+
+/// Used to integrate third party applications
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        return true
+    }
+}
+
+/// Contains information about a user
+final class UserSession: ObservableObject {
+    @Published var isLoggedIn: Bool = false
+    @Published var user: User? = nil
 }

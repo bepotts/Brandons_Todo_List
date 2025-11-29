@@ -43,11 +43,13 @@ class User: CustomStringConvertible {
         if password != passwordConfirmation {
             throw UserError.passwordMismatch
         }
-        
         if !EmailValidator.isValid(email) {
             throw UserError.invalidEmail
         }
-        
         return true
+    }
+    
+    func getInitials() -> String {
+        return "\(firstName.prefix(1))\(lastName.prefix(1))"
     }
 }
