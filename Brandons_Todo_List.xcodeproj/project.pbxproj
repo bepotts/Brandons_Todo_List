@@ -11,6 +11,7 @@
 		29B88D912ED9FC50004DD1C2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 29B88D902ED9FC50004DD1C2 /* FirebaseAnalytics */; };
 		29B88D932ED9FC50004DD1C2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 29B88D922ED9FC50004DD1C2 /* FirebaseAuth */; };
 		29B88D952ED9FC50004DD1C2 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 29B88D942ED9FC50004DD1C2 /* FirebaseCore */; };
+		29B88E5B2EDC74E8004DD1C2 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 29B88E5A2EDC74E1004DD1C2 /* .swiftformat */; };
 		29CA83F42EBD1611006ABD42 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 29CA83F32EBD1611006ABD42 /* README.md */; };
 		29CA83F82EBD16B2006ABD42 /* notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 29CA83F72EBD16B2006ABD42 /* notes.md */; };
 		29CA83FC2EBD1777006ABD42 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 29CA83FB2EBD1777006ABD42 /* .gitignore */; };
@@ -38,6 +39,7 @@
 		298E29932EBBF0DD00864C18 /* Brandons_Todo_ListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Brandons_Todo_ListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		298E299D2EBBF0DD00864C18 /* Brandons_Todo_ListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Brandons_Todo_ListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B88D8B2ED9F635004DD1C2 /* secrets.xcconfig.template */ = {isa = PBXFileReference; lastKnownFileType = text; path = secrets.xcconfig.template; sourceTree = "<group>"; };
+		29B88E5A2EDC74E1004DD1C2 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		29CA83F32EBD1611006ABD42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		29CA83F72EBD16B2006ABD42 /* notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = notes.md; sourceTree = "<group>"; };
 		29CA83FB2EBD1777006ABD42 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		298E297B2EBBF0DC00864C18 = {
 			isa = PBXGroup;
 			children = (
+				29B88E5A2EDC74E1004DD1C2 /* .swiftformat */,
 				29B88D8D2ED9F84A004DD1C2 /* credentials */,
 				29B88D8B2ED9F635004DD1C2 /* secrets.xcconfig.template */,
 				29CA83F72EBD16B2006ABD42 /* notes.md */,
@@ -228,6 +231,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				29B88D882ED91572004DD1C2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				29B88E582EDC709E004DD1C2 /* XCRemoteSwiftPackageReference "SwiftFormat" */,
+				29B88E592EDC70C2004DD1C2 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 298E29852EBBF0DC00864C18 /* Products */;
@@ -248,6 +253,7 @@
 			files = (
 				29CA83FC2EBD1777006ABD42 /* .gitignore in Resources */,
 				29CA83F82EBD16B2006ABD42 /* notes.md in Resources */,
+				29B88E5B2EDC74E8004DD1C2 /* .swiftformat in Resources */,
 				29B88D8C2ED9F63F004DD1C2 /* secrets.xcconfig.template in Resources */,
 				29CA83F42EBD1611006ABD42 /* README.md in Resources */,
 			);
@@ -630,6 +636,22 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 12.6.0;
+			};
+		};
+		29B88E582EDC709E004DD1C2 /* XCRemoteSwiftPackageReference "SwiftFormat" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nicklockwood/SwiftFormat";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.58.7;
+			};
+		};
+		29B88E592EDC70C2004DD1C2 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.62.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
