@@ -5,12 +5,12 @@
 //  Created by Brandon Potts on 11/26/25.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct NavigationPage: View {
-    @State private var visibility: NavigationSplitViewVisibility = .automatic
-    @State private var selection: String? = "notes"
+    // MARK: Internal
+
     var body: some View {
         NavigationSplitView {
             List(selection: $selection) {
@@ -43,6 +43,11 @@ struct NavigationPage: View {
             }
         }
     }
+
+    // MARK: Private
+
+    @State private var visibility: NavigationSplitViewVisibility = .automatic
+    @State private var selection: String? = "notes"
 }
 
 #Preview {

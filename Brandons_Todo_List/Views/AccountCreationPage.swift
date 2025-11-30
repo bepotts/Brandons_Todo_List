@@ -1,16 +1,15 @@
 //
-//  AccountCreation.swift
+//  AccountCreationPage.swift
 //  Brandons_Todo_List
 //
 //  Created by Brandon Potts on 11/26/25.
 //
 
+import os
 import SwiftData
 import SwiftUI
-import os
 
 struct AccountCreationPage: View {
-    
     @Environment(\.modelContext) private var context
     @EnvironmentObject var session: UserSession
     @State private var firstName: String = ""
@@ -18,7 +17,7 @@ struct AccountCreationPage: View {
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @State private var email: String = ""
-    
+
     var body: some View {
         VStack {
             Text("Create an Account")
@@ -28,12 +27,17 @@ struct AccountCreationPage: View {
             SecureField("Password", text: $password).roundedTextView()
             SecureField("Confirm Password", text: $confirmPassword).roundedTextView()
             Button("Create Account") {
-                let user = User(firstName: firstName, lastName: lastName, password: password,
-                                passwordConfirmation: confirmPassword, email: email)
+                let user = User(
+                    firstName: firstName,
+                    lastName: lastName,
+                    password: password,
+                    passwordConfirmation: confirmPassword,
+                    email: email
+                )
                 do {
                     let isValid = try user.validateFields()
                     if isValid {
-                        if (try saveUser(user: user)) != nil {
+                        if try (saveUser(user: user)) != nil {
                             session.isLoggedIn = true
                             session.user = user
                             Logger.users.info("User Session created: \(user.firstName) \(user.lastName) (\(user.email))")
@@ -45,7 +49,7 @@ struct AccountCreationPage: View {
             }
         }
     }
-    
+
     private func saveUser(user: User) throws -> Bool? {
         context.insert(user)
         do {

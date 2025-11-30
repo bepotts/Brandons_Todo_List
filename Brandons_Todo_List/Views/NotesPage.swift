@@ -5,22 +5,23 @@
 //  Created by Brandon Potts on 11/11/25.
 //
 
-import SwiftUI
-import SwiftData
 import os
+import SwiftData
+import SwiftUI
 
 struct NotesPage: View {
     @Environment(\.modelContext) private var context
-    @Query(sort: \NoteText.lastEdited, order: .reverse) var notes: [NoteText]
+    @Query(sort: \NoteText.lastEdited, order: .reverse)
+    var notes: [NoteText]
     @State private var currentText = ""
-    
+
     var body: some View {
         List(notes) { note in
             @Bindable var note = note
             HStack {
                 Image(systemName: "circle.fill")
-                    .font(.system(size: 6))  // tiny bullet
-                    .padding(.top, 6)        // aligns with text
+                    .font(.system(size: 6)) // tiny bullet
+                    .padding(.top, 6) // aligns with text
 
                 Text(note.text)
             }
@@ -34,7 +35,7 @@ struct NotesPage: View {
                 currentText = ""
             }
     }
-    
+
     func addNote(text: String) {
         context.insert(NoteText(text: text))
         do {

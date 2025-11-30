@@ -10,11 +10,15 @@ import SwiftData
 
 @Model
 class NoteText: Identifiable, Hashable {
-    var text: String
-    var lastEdited: Date
-    
+    // MARK: Lifecycle
+
     init(text: String) {
         self.text = text
-        self.lastEdited = .now
+        lastEdited = .now
     }
+
+    // MARK: Internal
+
+    var text: String
+    var lastEdited: Date
 }

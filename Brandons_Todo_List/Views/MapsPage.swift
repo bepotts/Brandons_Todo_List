@@ -5,12 +5,12 @@
 //  Created by Brandon Potts on 11/11/25.
 //
 
-import SwiftUI
 import MapKit
+import SwiftUI
 
 struct MapsPage: View {
-    @State private var position: MapCameraPosition = .automatic
-    
+    // MARK: Internal
+
     var body: some View {
         Map(position: $position) {
             UserAnnotation()
@@ -19,6 +19,10 @@ struct MapsPage: View {
                 .tint(.red)
         }
     }
+
+    // MARK: Private
+
+    @State private var position: MapCameraPosition = .automatic
 }
 
 #Preview {

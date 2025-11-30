@@ -1,5 +1,5 @@
 //
-//  Buttons.swift
+//  TextFields.swift
 //  Brandons_Todo_List
 //
 //  Created by Brandon Potts on 11/26/25.
@@ -9,9 +9,11 @@ import SwiftUI
 
 extension View {
     func roundedTextView() -> some View {
-        self.modifier(RoundedTextView())
+        modifier(RoundedTextView())
     }
 }
+
+// MARK: - RoundedTextView
 
 struct RoundedTextView: ViewModifier {
     func body(content: Content) -> some View {
@@ -26,9 +28,16 @@ struct RoundedTextView: ViewModifier {
     PreviewView()
 }
 
+// MARK: - PreviewView
+
 private struct PreviewView: View {
-    @State private var firstName: String = ""
+    // MARK: Internal
+
     var body: some View {
         TextField("First Name", text: $firstName).roundedTextView()
     }
+
+    // MARK: Private
+
+    @State private var firstName: String = ""
 }

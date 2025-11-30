@@ -7,28 +7,29 @@
 
 import Combine
 import FirebaseCore
-import SwiftUI
 import SwiftData
+import SwiftUI
 
+// MARK: - Brandons_Todo_ListApp
 
 @main
 struct Brandons_Todo_ListApp: App {
     // used to integerate third party applications
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            NoteText.self
+            NoteText.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-        
+
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -38,14 +39,20 @@ struct Brandons_Todo_ListApp: App {
     }
 }
 
+// MARK: - AppDelegate
+
 /// Used to integrate third party applications
 class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+    ) -> Bool {
         FirebaseApp.configure()
         return true
     }
 }
+
+// MARK: - UserSession
 
 /// Contains information about a user
 final class UserSession: ObservableObject {

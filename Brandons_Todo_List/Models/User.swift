@@ -10,8 +10,21 @@ import SwiftData
 
 @Model
 class User: CustomStringConvertible {
+    // MARK: Lifecycle
+
+    init(firstName: String, lastName: String, password: String, passwordConfirmation: String, email: String) {
+        id = UUID()
+        self.firstName = firstName
+        self.lastName = lastName
+        self.password = password
+        self.passwordConfirmation = passwordConfirmation
+        self.email = email
+    }
+
+    // MARK: Internal
+
     @Attribute(.unique) var id: UUID
-    
+
     /// User's First Name
     var firstName: String
     /// User's Last Name
@@ -22,20 +35,11 @@ class User: CustomStringConvertible {
     var passwordConfirmation: String
     /// User's email address
     var email: String
-    
+
     var description: String {
         "firstName:(\(firstName)),lastName:(\(lastName)), email:(\(email))"
     }
-    
-    init(firstName: String, lastName: String, password: String, passwordConfirmation: String, email: String) {
-        self.id = UUID()
-        self.firstName = firstName
-        self.lastName = lastName
-        self.password = password
-        self.passwordConfirmation = passwordConfirmation
-        self.email = email
-    }
-    
+
     func validateFields() throws -> Bool {
         if firstName.isEmpty || lastName.isEmpty || password.isEmpty || passwordConfirmation.isEmpty || email.isEmpty {
             throw UserError.emptyField
@@ -48,8 +52,8 @@ class User: CustomStringConvertible {
         }
         return true
     }
-    
+
     func getInitials() -> String {
-        return "\(firstName.prefix(1))\(lastName.prefix(1))"
+        "\(firstName.prefix(1))\(lastName.prefix(1))"
     }
 }
