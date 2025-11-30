@@ -12,7 +12,7 @@ struct ContentView: View {
     // MARK: Internal
 
     var body: some View {
-        if isLoggedIn {
+        if session.isLoggedIn {
             NavigationPage()
         } else {
             AccountCreationPage()
@@ -23,6 +23,7 @@ struct ContentView: View {
 
     @Environment(\.modelContext) private var modelContext
     @State private var isLoggedIn: Bool = false
+    @EnvironmentObject private var session: UserSession
 }
 
 #Preview {
